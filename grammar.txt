@@ -1,0 +1,17 @@
+Stmt_List -> Stmt Stmt_List
+    | empty.
+Stmt -> identifier assign Expr
+    | print Expr.
+Expr -> Term Term_Tail.
+Term_Tail -> Or Term Term_Tail
+    | empty.
+Term -> Factor Factor_Tail.
+Factor_Tail -> Xor Factor Factor_Tail
+    | empty.
+Factor -> Atom Atom_Tail.
+Atom_Tail -> And Atom Atom_Tail
+    | empty.
+Atom -> ( Expr ) | identifier | binary.
+And -> and.
+Xor -> xor.
+Or -> or.
