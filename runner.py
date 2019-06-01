@@ -261,15 +261,15 @@ class Runner:
         return a | b
 
 
-parser = Runner()
+runner = Runner()
 
 with open('data.in') as fp:
     try:
-        parser.parse(fp)
+        runner.parse(fp)
     except plex.errors.PlexError:
-        _, line, char = parser.position()
+        _, line, char = runner.position()
         print("Plex Error: at line {} char {}".format(line, char + 1))
     except ParseError as err:
-        _, line, char = parser.position()
+        _, line, char = runner.position()
         print("Parse Error: {} at line {} char {}".format(
             err, line, char + 1))
